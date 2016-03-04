@@ -1,0 +1,11 @@
+{
+  "name": "data-sctructures",
+  "version": "1.0.0",
+  "description": "Personal project for the practice of basic algorithms and data structures",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheLox95",
+  "license": "ISC"
+}
