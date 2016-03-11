@@ -5,3 +5,4 @@ import SLL = require("./linkedList/LinkedList");
 
 
 var lista = new SLL.LinkedList.SimpleList<number>();
+term.red(lista.setValue(8).getValue());
