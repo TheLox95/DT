@@ -5,6 +5,10 @@
         "noImplicitAny": false,
         "sourceMap": false
     },
+    "files": [
+        "linkedList/LinkedList.ts",
+        "main.ts"
+    ],
     "exclude": [
         "node_modules"
     ]

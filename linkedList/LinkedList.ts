@@ -1,24 +1,36 @@
-export module LinkedList{
+/// <reference path="ListNode.ts" />
+export namespace LinkedList{
 
 	export class SimpleList<T>{
-		private _data: T;
-		private _next: SimpleList<T>;
+		private _head: ListNode<T>;
+		private _tail: ListNode<T>;
+		private count: number;
 
-		public insertAfter(value:T){
-			var newNode: SimpleList<T> = new SimpleList<T>();
-			newNode._data = value;
-			newNode._next = this._next;
-			this._next = newNode;
+		constructor() {
+			this._head = null;
+			this._tail = null;
+			this.count = 0;
 		}
 
-		public setValue(value:T): this{
-			this._data = value;
+		public append(value:T): this{
+			if(this._head == null) {
+				let node = new ListNode<T>;
+				this._head = node;
+				this._tail = node;
+
+				this._head._setValue(value);
+			}else{
+				this._tail.insertAfter(value);
+				this._tail = this._tail.getNext();
+			}
+
+			this.count++;
+
 			return this;
 		}
 
-		public getValue(): T{
-			return this._data;
-		}
+		public prepend(){}
 	}
+
 
 }
