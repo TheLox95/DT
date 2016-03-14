@@ -1,23 +1,10 @@
-var BinarySearch = (function () {
-    function BinarySearch() {
-    }
-    BinarySearch.prototype.search = function (numero, array) {
-        var low = 0;
-        var high = array.length;
-        var index = null;
-        while (index == null) {
-            var middleIndex = Math.round(low + (high - low) / 2) - 1;
-            if (array[middleIndex] < numero) {
-                low = middleIndex + 1;
-            }
-            else if (array[middleIndex] > numero) {
-                high = middleIndex - 1;
-            }
-            else {
-                index = middleIndex;
-            }
-        }
-        return index;
-    };
-    return BinarySearch;
-}());
+"use strict";
+var term = require("terminal-kit");
+term = term.terminal();
+var SLL = require("./linkedList/LinkedList");
+var lista = new SLL.LinkedList.SimpleList();
+lista.append(10).append(20).append(30);
+var iterador = lista.getIterator();
+for (iterador.start(); iterador.isValid(); iterador.forth()) {
+    term.green(iterador.getItem());
+}
