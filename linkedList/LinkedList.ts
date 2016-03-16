@@ -95,6 +95,55 @@ export module LinkedList{
 		public getIterator(): SimpleListIterator<T>{
 			return new SimpleListIterator<T>(this, this._head);
 		}
+
+		public insert(iterator: SimpleListIterator<T>, value:T): this{
+			if(iterator.getList() != this) {
+				return;
+			}
+
+			if(iterator.getNode() != null) {
+				iterator.getNode().insertAfter(value);
+
+				if(iterator.getNode() == this._tail) {
+					this._tail = iterator.getNode().getNext();
+				}
+
+				this._count++;
+			}else{
+				this.append(value);
+			}
+			return this;
+		}
+
+		public remove(iterator:SimpleListIterator<T>){
+			var headNodePointer = this._head;
+
+			if(iterator.getList() != this) {
+				return;
+			}
+
+			if(iterator.getNode() == null) {
+				return;
+			}
+
+			if(iterator.getNode() == this._head) {
+				iterator.forth();
+				this.removeHead();
+			}else{
+				while(headNodePointer.getNext() != iterator.getNode()){
+					headNodePointer = headNodePointer.getNext();
+				}
+
+				iterator.forth();
+
+				if(headNodePointer.getNext() == this._tail) {
+					this._tail = headNodePointer;
+				}
+
+				headNodePointer.setNext(null);
+				headNodePointer.setNext(iterator.getNode());
+			}
+		}
 	}
 
 	export class SimpleListIterator<T>{
@@ -104,6 +153,14 @@ export module LinkedList{
 		constructor(list: SimpleList<T> = null, node: ListNode<T> = null){
 			this._mainNode = node;
 			this._list = list;
+		}
+
+		getList(){
+			return this._list;
+		}
+
+		getNode(){
+			return this._mainNode;
 		}
 
 		start(): this{
