@@ -1,6 +1,6 @@
 export module LinkedList{
 
-	export class SimpleList<T>{
+	export class DoubleLinkedList<T>{
 		private _head: ListNode<T>;
 		private _tail: ListNode<T>;
 		private _count: number;
@@ -19,16 +19,21 @@ export module LinkedList{
 			return this._tail;
 		}
 
+		public getCount(){
+			return this._count;
+		}
+
 		public append(value:T): this{
+			let node = new ListNode<T>();
+			node.setValue(value);
+
 			if(this._head == null) {
-				let node = new ListNode<T>();
 				this._head = node;
 				this._tail = node;
-
-				this._head.setValue(value);
 			}else{
-				this._tail.insertAfter(value);
-				this._tail = this._tail.getNext();
+				node.setPrevious(this._tail);
+				this._tail.setNext(node);
+				this._tail = node;
 			}
 
 			this._count++;
@@ -115,7 +120,7 @@ export module LinkedList{
 			return this;
 		}
 
-		public remove(iterator:SimpleListIterator<T>){
+		public remove(iterator:SimpleListIterator<T>):this{
 			var headNodePointer = this._head;
 
 			if(iterator.getList() != this) {
@@ -129,6 +134,8 @@ export module LinkedList{
 			if(iterator.getNode() == this._head) {
 				iterator.forth();
 				this.removeHead();
+			} else if (iterator.getNode() == this._tail) {
+				this.removeTail();
 			}else{
 				while(headNodePointer.getNext() != iterator.getNode()){
 					headNodePointer = headNodePointer.getNext();
@@ -136,21 +143,21 @@ export module LinkedList{
 
 				iterator.forth();
 
-				if(headNodePointer.getNext() == this._tail) {
-					this._tail = headNodePointer;
-				}
-
 				headNodePointer.setNext(null);
 				headNodePointer.setNext(iterator.getNode());
+				headNodePointer.getNext().setPrevious(headNodePointer);
 			}
+
+			return this;
 		}
+
 	}
 
-	export class SimpleListIterator<T>{
+	class SimpleListIterator<T>{
 		private _mainNode : ListNode<T>;
-		private _list : SimpleList<T>;
+		private _list : DoubleLinkedList<T>;
 
-		constructor(list: SimpleList<T> = null, node: ListNode<T> = null){
+		constructor(list: DoubleLinkedList<T> = null, node: ListNode<T> = null) {
 			this._mainNode = node;
 			this._list = list;
 		}
@@ -188,6 +195,7 @@ export module LinkedList{
 	}
 
 	class ListNode<T>{
+		private _previous: ListNode<T> = null;
 		private _data: T;
 		private _next: ListNode<T> = null;
 
@@ -214,6 +222,14 @@ export module LinkedList{
 		public setNext(value: ListNode<T>): this{
 			this._next = value;
 			return this;
+		}
+
+		public getPrevious(){
+			return this._previous;
+		}
+
+		public setPrevious(node:ListNode<T>){
+			return this._previous = node;
 		}
 	}
 }

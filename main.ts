@@ -1,22 +1,25 @@
 import term = require("terminal-kit");
 term = term.terminal();
-import SLL = require("./linkedList/LinkedList");
+import SLL = require("./linkedList/DoubleLinkedList");
 
 
-var lista = new SLL.LinkedList.SimpleList<number>();
+var lista = new SLL.LinkedList.DoubleLinkedList<number>();
 lista.append(10).append(20).append(30);
 
-var iterador = lista.getIterator();
-
 term.red(lista.getHead().getValue()+"\n");
+term.yellow(lista.getHead().getNext().getValue() + "\n");
+term.green(lista.getTail().getValue()+"\n");
+term(lista.getCount());
+term("\n");
+
+var iterador = lista.getIterator();
 lista.remove(iterador);
-term.green(lista.getHead().getValue());
 
+term.red(lista.getHead().getValue() + "\n");
+term.yellow(lista.getHead().getNext().getNext().getValue() + "\n");
+term.green(lista.getTail().getValue() + "\n");
 
+term(lista.getCount());
 
-// for (iterador.start(); iterador.isValid(); iterador.forth()){
-// 	term.green(iterador.getItem());
-// 	term.
-// }
 
 

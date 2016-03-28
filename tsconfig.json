@@ -6,7 +6,7 @@
         "sourceMap": false
     },
     "files": [
-        "linkedList/LinkedList.ts",
+        "linkedList/DoubleLinkedList.ts",
         "main.ts"
     ],
     "exclude": [
