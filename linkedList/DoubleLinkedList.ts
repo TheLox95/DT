@@ -151,6 +151,14 @@ export module LinkedList{
 			return this;
 		}
 
+		public traverse(func:Function){
+			let current = this._head;
+			while(current != null){
+				func(current.getValue());
+				current.getNext();
+			}
+		}
+
 	}
 
 	class SimpleListIterator<T>{
