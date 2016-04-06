@@ -6,8 +6,8 @@
         "sourceMap": false
     },
     "files": [
-        "linkedList/LinkedList.ts",
-        "main.ts"
+        "main.ts",
+	"hashTable/HashTable.ts"
     ],
     "exclude": [
         "node_modules"
