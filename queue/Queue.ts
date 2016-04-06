@@ -9,13 +9,16 @@ export class Queue<T>{
 	}
 
 
-	public enqueue(value:T){
+	public enqueue(value:T):this{
 		this._queue[this._count] = value;
 		this._count++;
+
+		return this;
 	}
 
-	public dequeue(){
+	public dequeue():this{
 		this._count--;
+		return this;
 	}
 
 	public peek(){
