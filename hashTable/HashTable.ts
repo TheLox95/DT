@@ -1,7 +1,7 @@
 import SLL = require("../linkedList/LinkedList");
 
 type HashEntryType<T, Q> = HashEntry<T,Q>;
-type hashFunction = (value) => number;
+type hashFunction = (value:string) => number;
 
 interface HashEntry<KeyT, ValueT> {
 	key: KeyT;
@@ -10,7 +10,7 @@ interface HashEntry<KeyT, ValueT> {
 
 export class HashTable<KeyT,ValueT>{
 	private _modulo = 19;
-	private _count;
+	private _count:number;
 	private _table: Array<SLL.LinkedList.SimpleList<HashEntryType<KeyT,ValueT>>>;
 	private _hashFunction: hashFunction;
 
@@ -31,7 +31,7 @@ export class HashTable<KeyT,ValueT>{
 	}
 
 	private calculateHash(key: KeyT) {
-		return this._hashFunction(key) % this._modulo;
+		return this._hashFunction(key.toString()) % this._modulo;
 	}
 
 	private existsIndex(index:number){
@@ -67,16 +67,12 @@ export class HashTable<KeyT,ValueT>{
 		return this;
 	}
 
-	private ifIndexDoNotExistThrowErr(index){
-		if(this.existsIndex(index) == false) {
-			throw "This hash does't exists.";
+	public find(key:KeyT): ValueT{
+		let index = this.calculateHash(key);
+
+		if(this.existsIndex(index) == false){
+			return null;
 		}
-	}
-
-	public find(key:KeyT){
-		var index = this.calculateHash(key);
-
-		this.ifIndexDoNotExistThrowErr(index);
 
 		let iterador = this._table[index].getIterator();
 
@@ -87,24 +83,29 @@ export class HashTable<KeyT,ValueT>{
 			iterador.forth();
 		}
 
-		throw "This element does't exist in the table.";
+		return null;
 	}
 
-	public remove(key: KeyT) {
+	public remove(key: KeyT): this {
 		var index = this.calculateHash(key);
 
-		this.ifIndexDoNotExistThrowErr(index);
+		if (this.existsIndex(index) == false) {
+			return null;
+		}
 
 		let iterador = this._table[index].getIterator();
 
 		while (iterador.isValid()) {
 			if (iterador.getItem().key == key) {
 				this._table[index].remove(iterador);
+				return this;
 			}
 			iterador.forth();
 		}
 
 		this.decreaseCount();
+
+		return null;
 	}
 
 }

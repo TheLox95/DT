@@ -1,11 +1,18 @@
 {
   "name": "data-sctructures",
   "version": "1.0.0",
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "typings": "^0.7.12"
+  },
   "description": "Personal project for the practice of basic algorithms and data structures",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "author": "TheLox95",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "terminal-kit": "^0.24.0"
+  }
 }
