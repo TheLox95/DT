@@ -6,8 +6,8 @@
         "sourceMap": false
     },
     "files": [
-        "linkedList/DoubleLinkedList.ts",
-        "main.ts"
+	"tree/BinaryTree.ts",
+	"uTest/BinaryTreeTest.ts"
     ],
     "exclude": [
         "node_modules"
