@@ -4,22 +4,33 @@ import * as t from  "../tree/BinaryTree";
 describe("Binary Tree",()=>{
 
 	let tree = new t.BinaryTree<number>().setValue(100);
-	tree.setRight(new t.BinaryTree<number>().setValue(20));
-	tree.setLeft(new t.BinaryTree<number>().setValue(10));
+	tree.setLeft(new t.BinaryTree<number>().setValue(20));
+	tree.getLeft().setLeft(new t.BinaryTree<number>().setValue(10));
 
 
-	it("should has 2 children",()=>{
-		expect(tree.getCount() - 1).toBe(2);
+	it("should has 1 child",()=>{
+		expect(tree.getRight() == null).toBeTruthy();
 	});
 
 	it("should has value of 100",()=>{
 		expect(tree.getValue()).toBe(100);
 	});
 
+
 	it("should has a size of 5",()=>{
-		tree.getRight().setRight(new t.BinaryTree<number>().setValue(15));
-		tree.getRight().setLeft(new t.BinaryTree<number>().setValue(12));
+		tree.getLeft().setRight(new t.BinaryTree<number>().setValue(15));
+		tree.getLeft().getLeft().setLeft(new t.BinaryTree<number>().setValue(12));
 		expect(tree.getCount()).toBe(5);
+	});
+
+	it("should has value of 12",()=>{
+		let value = tree.getRoot() //root - value : 100
+				.getLeft() //left child - value : 20
+				.getLeft() //left child - value : 10
+				.getLeft() //left child - value : 12
+				.getValue();
+
+		expect(value).toBe(12);
 	});
 
 	it("should return node of value 10",()=>{
@@ -54,7 +65,7 @@ describe("Binary Tree",()=>{
 		}
 
 		tree.insert(5, insertFun);
-		expect(tree.getLeft().getValue()).toBe(5);
+		expect(tree.getLeft().getLeft().getValue()).toBe(5);
 	});
 
 	it("should insert 90,95,80,85,70,75",()=>{
@@ -65,8 +76,12 @@ describe("Binary Tree",()=>{
 			.insert(70)
 			.insert(75);
 
-		expect(tree.getRoot().getRight().getValue()).toBe(90);
-		expect(tree.getRoot().getRight().getRight().getValue()).toBe(95);
+		expect(tree.search(90).getValue()).toBe(90);
+		expect(tree.search(95).getValue()).toBe(95);
+		expect(tree.search(80).getValue()).toBe(80);
+		expect(tree.search(85).getValue()).toBe(85);
+		expect(tree.search(70).getValue()).toBe(70);
+		expect(tree.search(75).getValue()).toBe(75);
 	});
 });
 

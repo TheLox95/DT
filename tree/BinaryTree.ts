@@ -58,6 +58,14 @@ export class BinaryTree<ValueT>{
 
 	public setComparer(func: ComparerFunction<ValueT>) {
 		this._comparer = func;
+
+		if (this._left != null) {
+			this._left.setComparer(func);
+		}
+
+		if (this._right != null) {
+			this._right.setComparer(func);
+		}
 	}
 
 	public getComparer(){
@@ -66,6 +74,14 @@ export class BinaryTree<ValueT>{
 
 	public setSearchFunction(func: SearchFunction<ValueT>) {
 		this._searchFunction = func;
+
+		if(this._left != null){
+			this._left.setSearchFunction(func);
+		}
+
+		if (this._right != null) {
+			this._right.setSearchFunction(func);
+		}
 	}
 
 	public getSearchFunction() {
@@ -89,7 +105,7 @@ export class BinaryTree<ValueT>{
 	public isFull():boolean{
 		return this._left != null && this._right != null;
 	}
-
+	//TODO : Comparer deberia ser una interfaz!
 	public insert(data: ValueT, comparer?:ComparerFunction<ValueT>):this {
 		if (comparer != null) {
 			this._comparer = comparer;
@@ -104,7 +120,7 @@ export class BinaryTree<ValueT>{
 
 		let tempNode = new BinaryTree<ValueT>().setValue(data);
 
-		while (true) {
+		while (current != null) {
 			let parent = current;
 
 			let result = this._comparer(data, current.getValue());
@@ -130,20 +146,22 @@ export class BinaryTree<ValueT>{
 	}
 
 	public search(value: ValueT, func?:SearchFunction<ValueT>): BinaryTree<ValueT> {
-		if(func){
+		if(func != null){
 			this._searchFunction = func;
 		}
-		return this._searchFunction(this,value);
+
+		let result = this._searchFunction(this,value);
+		return result;
 	}
 
 	public getCount():number{
 		let count: number = 1;
 
-		if(this._left !== null){
+		if(this._left != null){
 			count += this._left.getCount();
 		}
 
-		if(this._right !== null){
+		if(this._right != null){
 			count += this._right.getCount();
 		}
 
