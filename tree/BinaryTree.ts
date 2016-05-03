@@ -1,4 +1,3 @@
-export type SearchFunction<T> = (current: BinaryTree<T>, value: T)=>BinaryTree<T>;
 export type ComparerFunction<T> = (value1:T,value2:T) => boolean;
 
 export class BinaryTree<ValueT>{
@@ -8,7 +7,6 @@ export class BinaryTree<ValueT>{
 	private _left: BinaryTree<ValueT>;
 	private _right: BinaryTree<ValueT>;
 
-	private _searchFunction: SearchFunction<ValueT>;
 	private _comparer: ComparerFunction<ValueT>;
 
 	constructor(){
@@ -72,21 +70,6 @@ export class BinaryTree<ValueT>{
 		return this._comparer;
 	}
 
-	public setSearchFunction(func: SearchFunction<ValueT>) {
-		this._searchFunction = func;
-
-		if(this._left != null){
-			this._left.setSearchFunction(func);
-		}
-
-		if (this._right != null) {
-			this._right.setSearchFunction(func);
-		}
-	}
-
-	public getSearchFunction() {
-		return this._searchFunction;
-	}
 
 	public getRoot(): BinaryTree<ValueT> {
 		let tree: BinaryTree<ValueT> = this;
@@ -96,8 +79,6 @@ export class BinaryTree<ValueT>{
 		return tree;
 	}
 
-	//●▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬๑۩۩๑▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬●
-
 	public isRoot():boolean{
 		return this._parent != null;
 	}
@@ -105,10 +86,13 @@ export class BinaryTree<ValueT>{
 	public isFull():boolean{
 		return this._left != null && this._right != null;
 	}
-	//TODO : Comparer deberia ser una interfaz!
+
+
+
+	//TODO : Comparer deberia ser una interfaz?
 	public insert(data: ValueT, comparer?:ComparerFunction<ValueT>):this {
-		if (comparer != null) {
-			this._comparer = comparer;
+		if (comparer) {
+			this.setComparer(comparer);
 		}
 
 		let current = this.getRoot();
@@ -145,13 +129,36 @@ export class BinaryTree<ValueT>{
 		return this;
 	}
 
-	public search(value: ValueT, func?:SearchFunction<ValueT>): BinaryTree<ValueT> {
-		if(func != null){
-			this._searchFunction = func;
+	public search(value: ValueT, comparer?:ComparerFunction<ValueT>): BinaryTree<ValueT> {
+		if (comparer) {
+			this.setComparer(comparer);
 		}
 
-		let result = this._searchFunction(this, value);
-		return result == null ? null : result;
+		let current = this.getRoot();
+
+		if (current.getValue() == value) {
+			return current;
+		}
+
+
+		let tempNode = new BinaryTree<ValueT>().setValue(value);
+
+		while (current.getValue() != value) {
+			let result = this._comparer(value, current.getValue());
+
+			if (result == true) {
+				current = current.getLeft();
+
+			} else {
+				current = current.getRight();
+			}
+
+			if(current == null) {
+				return null
+			}
+		}
+
+		return current;
 	}
 
 	public getCount():number{

@@ -34,29 +34,6 @@ describe("Binary Tree",()=>{
 		expect(value).toBe(12);
 	});
 
-	it("should return node of value 10",()=>{
-		let searchFun: t.SearchFunction<number> = (_tree, data)=>{
-			_tree = _tree.getRoot();
-			while(_tree.getValue() != data){
-				if(_tree.getValue() > data) {
-					_tree = _tree.getLeft();
-				}else{
-					_tree = _tree.getRight();
-				}
-
-				if(tree === null){
-					return null;
-				}
-			}
-			return _tree;
-		}
-
-		tree.setSearchFunction(searchFun);
-		tree = tree.search(10);
-
-		expect(tree.getValue()).toBe(10);
-	});
-
 	it("should insert value of 5 under node of value 10",()=>{
 		let insertFun: t.ComparerFunction<number> = (num1, num2) => {
 			if(num1 < num2) {
@@ -68,6 +45,13 @@ describe("Binary Tree",()=>{
 		tree.insert(5, insertFun);
 		expect(tree.search(10).getLeft().getValue()).toBe(5);
 	});
+
+	it("should return node of value 10",()=>{
+		tree = tree.search(10);
+
+		expect(tree.getValue()).toBe(10);
+	});
+
 
 	it("should insert 90,95,80,85,70,75",()=>{
 		tree.insert(90)
@@ -85,6 +69,10 @@ describe("Binary Tree",()=>{
 
 		expect(tree.search(80).getLeft().getValue()).toBe(70);
 		expect(tree.search(70).getRight().getValue()).toBe(75);
+	});
+
+	it("should be null",()=>{
+		expect(tree.search(19)).toBeNull();
 	});
 });
 
