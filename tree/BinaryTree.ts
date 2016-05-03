@@ -1,4 +1,5 @@
 export type ComparerFunction<T> = (value1:T,value2:T) => boolean;
+export type TraversalFunction<T> = (value : T) => void;
 
 export class BinaryTree<ValueT>{
 
@@ -6,6 +7,7 @@ export class BinaryTree<ValueT>{
 	private _parent: BinaryTree<ValueT>;
 	private _left: BinaryTree<ValueT>;
 	private _right: BinaryTree<ValueT>;
+	private _traversalFunction: TraversalFunction<ValueT>;
 
 	private _comparer: ComparerFunction<ValueT>;
 
@@ -68,6 +70,21 @@ export class BinaryTree<ValueT>{
 
 	public getComparer(){
 		return this._comparer;
+	}
+
+	public setTraversalFunction(func: TraversalFunction<ValueT>){
+		this._traversalFunction = func;
+		if(this._left) {
+			this._left.setTraversalFunction(func);
+		}
+
+		if(this._right) {
+			this._left.setTraversalFunction(func);
+		}
+	}
+
+	public getTraversalFunction(){
+		return this._traversalFunction
 	}
 
 
@@ -159,6 +176,48 @@ export class BinaryTree<ValueT>{
 		}
 
 		return current;
+	}
+
+	public preOrderTraversal(tree:BinaryTree<ValueT>,func?:TraversalFunction<ValueT>):void{
+		if(func) {
+			this.setTraversalFunction(func);
+		}
+
+		if(tree == null) {
+			return;
+		}
+
+		this._traversalFunction(tree._value);
+		this.preOrderTraversal(tree._left);
+		this.preOrderTraversal(tree._right);
+	}
+
+	public inOrderTraversal(tree: BinaryTree<ValueT>, func?: TraversalFunction<ValueT>): void {
+		if (func) {
+			this.setTraversalFunction(func);
+		}
+
+		if (tree == null) {
+			return;
+		}
+
+		this.inOrderTraversal(tree._left);
+		this._traversalFunction(tree._value);
+		this.inOrderTraversal(tree._right);
+	}
+
+	public postOrderTraversal(tree: BinaryTree<ValueT>, func?: TraversalFunction<ValueT>): void {
+		if (func) {
+			this.setTraversalFunction(func);
+		}
+
+		if (tree == null) {
+			return;
+		}
+
+		this.postOrderTraversal(tree._left);
+		this.postOrderTraversal(tree._right);
+		this._traversalFunction(tree._value);
 	}
 
 	public getCount():number{
