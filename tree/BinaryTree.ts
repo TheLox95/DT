@@ -150,8 +150,8 @@ export class BinaryTree<ValueT>{
 			this._searchFunction = func;
 		}
 
-		let result = this._searchFunction(this,value);
-		return result;
+		let result = this._searchFunction(this, value);
+		return result == null ? null : result;
 	}
 
 	public getCount():number{
