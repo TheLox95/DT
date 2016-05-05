@@ -6,8 +6,8 @@
         "sourceMap": false
     },
     "files": [
-	"tree/BinaryTree.ts",
-	"uTest/BinaryTreeTest.ts"
+	"heap/Heap.ts",
+	"uTest/HeapTest.ts"
     ],
     "exclude": [
         "node_modules"
