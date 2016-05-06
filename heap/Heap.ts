@@ -7,6 +7,7 @@ export class Heap<ValueT> {
 	constructor(func:ComparerFunction<ValueT>) {
 		this._arr = [];
 		this._comparer = func;
+		this._count = 0;
 	}
 
 	public getCount() : number {
@@ -73,14 +74,14 @@ export class Heap<ValueT> {
 				}
 			}
 
-			if(this._comparer(temp, this._arr[childIndex]) == false){
+			if(this._comparer(temp, this._arr[childIndex])){
 				this._arr[parentIndex] = this._arr[childIndex];
 				parentIndex = childIndex;
 				childIndex *= 2;
 			}else{
 				break;
 			}
-			this._arr[parentIndex] = temp;
 		}
+		this._arr[parentIndex] = temp;
 	}
 }
