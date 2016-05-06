@@ -12,7 +12,7 @@ describe("Heap",()=>{
 	});
 
 
-	it("should return 32",()=>{
+	it("should enqueue 8 elements and return 32",()=>{
 		heap.enqueue(10)
 			.enqueue(15)
 			.enqueue(19)
@@ -25,7 +25,7 @@ describe("Heap",()=>{
 		expect(heap.getItem()).toBe(32);
 	});
 
-	it("should return 8",()=>{
+	it("should dequeue 3 elements and return 8",()=>{
 		heap.dequeue()
 			.dequeue()
 			.dequeue();
