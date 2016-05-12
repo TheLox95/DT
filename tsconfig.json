@@ -7,7 +7,7 @@
     },
     "files": [
         "linkedList/LinkedList.ts",
-        "main.ts"
+	"graph/Graph.ts"
     ],
     "exclude": [
         "node_modules"
