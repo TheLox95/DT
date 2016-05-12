@@ -7,9 +7,10 @@
     },
     "files": [
         "linkedList/LinkedList.ts",
+	"queue/Queue.ts",
 	"graph/Graph.ts"
+
     ],
     "exclude": [
         "node_modules"
     ]
-}
