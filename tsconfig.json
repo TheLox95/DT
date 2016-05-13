@@ -5,12 +5,11 @@
         "noImplicitAny": false,
         "sourceMap": false
     },
+    "exclude": [ "node_modules" ],
     "files": [
         "linkedList/LinkedList.ts",
 	"queue/Queue.ts",
-	"graph/Graph.ts"
-
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+	"graph/Graph.ts",
+	"uTest/GraphTest.ts"
+	]
+}

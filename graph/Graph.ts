@@ -1,5 +1,7 @@
 /// <reference path="../linkedList/LinkedList.ts"/>
 import * as list from "../linkedList/LinkedList";
+import  {Queue} from "../queue/Queue";
+
 
 type Node<T,V> = GraphNode<T,V>;
 type Arc<T, V> = GraphArc<T,V>;
@@ -67,10 +69,10 @@ class GraphNode<NodeType, ArcType> {
 		return this;
 	}
 
-	public findArc(node:Node<NodeType,ArcType>){
+	public findArc(node:Node<NodeType,ArcType>):GraphArc<NodeType,ArcType>{
 		let iterator :list.SimpleListIterator<Arc<NodeType,ArcType>>  = this._arcList.getIterator();	
 
-		for (iterator.start(); iterator.isValid(), iterator.forth()) {
+		for (iterator.start(); iterator.isValid(); iterator.forth()) {
 			if(iterator.getItem().getNode() == node) {
 				return iterator.getItem();
 			}
@@ -80,7 +82,7 @@ class GraphNode<NodeType, ArcType> {
 
 	public removeArc(node:Node<NodeType,ArcType>){
 		let iterator :list.SimpleListIterator<Arc<NodeType,ArcType>>  = this._arcList.getIterator();	
-		for (iterator.start(); iterator.isValid(), iterator.forth()) {
+		for (iterator.start(); iterator.isValid(); iterator.forth()) {
 			if(iterator.getItem().getNode() == node) {
 				this._arcList.remove(iterator);
 			}
@@ -89,7 +91,7 @@ class GraphNode<NodeType, ArcType> {
 	}
 }
 
-class Graph<NodeType, ArcType> {
+export class Graph<NodeType, ArcType> {
 	
 	private _nodes: Array<Node<NodeType,ArcType>>;
 	private _count:number;
@@ -98,6 +100,10 @@ class Graph<NodeType, ArcType> {
 	constructor(){
 		this._nodes = [];
 		this._count = 0;
+	}
+
+	public getCount():number{
+		return this._count;
 	}
 
 	public addNode(data:NodeType,index:number):boolean{
@@ -113,7 +119,7 @@ class Graph<NodeType, ArcType> {
 
 	public removeNode(index:number):this{
 		if(this._nodes[index] == null){
-			return;
+			return null;
 		}
 		let nodeIndex: number;
 		let arc: Arc<NodeType, ArcType>;
@@ -154,10 +160,17 @@ class Graph<NodeType, ArcType> {
 		return this;
 	}
 
+	public findNode(index:number){
+		if( this._nodes[index] == null){
+			return null;
+		}
+		return this._nodes[index];
+	}
+
 
 	public findArc(indexNodeFrom:number, indexNodeTo:number):Arc<NodeType,ArcType>{
 		if(this._nodes[indexNodeFrom] == null || this._nodes[indexNodeTo] == null){
-			return ;
+			return null;
 		}
 
 		return this._nodes[indexNodeFrom].findArc(this._nodes[indexNodeTo]);
@@ -191,9 +204,27 @@ class Graph<NodeType, ArcType> {
 		}
 	}
 	
-	public breadthFirst(node: Node<NodeType, ArcType>, func:(node:Node<NodeType,ArcType)=>void){
+	public breadthFirst(node: Node<NodeType, ArcType>, func:(node:Node<NodeType,ArcType>)=>void){
 		if(node == null){
 			return;
+		}
+
+		let queue = new Queue<Node<NodeType, ArcType>>();
+		let iterator: list.SimpleListIterator<Arc<NodeType,ArcType>>;
+
+		queue.enqueue(node);
+		node.setIsMarked(false);
+
+		while(queue.getCount() != 0){
+			func(queue.peek());
+			iterator = queue.peek().getArcListIterator();
+			for (iterator.start(); iterator.isValid(); iterator.forth()){
+				if(iterator.getItem().getNode().getIsMarked() == false) {
+					iterator.getItem().getNode().setIsMarked(true);
+					queue.enqueue(iterator.getItem().getNode());
+				}
+			}
+			queue.dequeue();
 		}
 
 	}
