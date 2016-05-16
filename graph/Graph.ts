@@ -3,7 +3,7 @@ import * as list from "../linkedList/LinkedList";
 import  {Queue} from "../queue/Queue";
 
 
-type Node<T,V> = GraphNode<T,V>;
+export type Node<T,V> = GraphNode<T,V>;
 type Arc<T, V> = GraphArc<T,V>;
 
 class GraphArc<TypeNode, TypeArc> {
@@ -37,6 +37,7 @@ class GraphNode<NodeType, ArcType> {
 
 	constructor(){
 		this._arcList = new list.SimpleList<Arc<NodeType,ArcType>>();
+		this._isMarked = false;
 	}
 
 	public setValue(value:NodeType): this{
@@ -191,6 +192,7 @@ export class Graph<NodeType, ArcType> {
 		if(node == null) {
 			return;
 		}
+		this._clearMarks();
 		func(node);
 		node.setIsMarked(true);
 
@@ -208,12 +210,13 @@ export class Graph<NodeType, ArcType> {
 		if(node == null){
 			return;
 		}
+		this._clearMarks();
 
 		let queue = new Queue<Node<NodeType, ArcType>>();
 		let iterator: list.SimpleListIterator<Arc<NodeType,ArcType>>;
 
 		queue.enqueue(node);
-		node.setIsMarked(false);
+		node.setIsMarked(true);
 
 		while(queue.getCount() != 0){
 			func(queue.peek());

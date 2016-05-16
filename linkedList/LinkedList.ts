@@ -9,6 +9,10 @@ export class SimpleList<T>{
 		this._count = 0;
 	}
 
+	public getCount(){
+		return this._count;
+	}
+
 	public getHead(){
 		return this._head;
 	}
