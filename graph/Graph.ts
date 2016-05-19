@@ -4,7 +4,7 @@ import  {Queue} from "../queue/Queue";
 
 
 export type Node<T,V> = GraphNode<T,V>;
-type Arc<T, V> = GraphArc<T,V>;
+export type Arc<T, V> = GraphArc<T,V>;
 
 class GraphArc<TypeNode, TypeArc> {
 
@@ -37,7 +37,6 @@ class GraphNode<NodeType, ArcType> {
 
 	constructor(){
 		this._arcList = new list.SimpleList<Arc<NodeType,ArcType>>();
-		this._isMarked = false;
 	}
 
 	public setValue(value:NodeType): this{
