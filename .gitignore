@@ -1,4 +1,6 @@
 */*.js
 *.js
 node_modules/
+**/*.log
 spec/
+.exrc

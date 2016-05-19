@@ -8,11 +8,9 @@
   "description": "Personal project for the practice of basic algorithms and data structures",
   "main": "main.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "tsc": "tsc"
   },
   "author": "TheLox95",
-  "license": "ISC",
-  "dependencies": {
-    "terminal-kit": "^0.24.0"
-  }
+  "license": "ISC"
 }
