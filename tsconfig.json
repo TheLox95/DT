@@ -7,7 +7,7 @@
     },
     "files": [
         "linkedList/DoubleLinkedList.ts",
-        "main.ts"
+    	"uTest/DoubleLinkedList.ts"
     ],
     "exclude": [
         "node_modules"
