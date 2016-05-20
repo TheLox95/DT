@@ -7,7 +7,9 @@
     },
     "files": [
         "linkedList/DoubleLinkedList.ts",
-    	"uTest/DoubleLinkedList.ts"
+        "uTest/DoubleLinkedList.ts"
+        "tree/BinaryTree.ts",
+        "uTest/BinaryTreeTest.ts"
     ],
     "exclude": [
         "node_modules"

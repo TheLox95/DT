@@ -95,11 +95,11 @@ export class DoubleLinkedList<T>{
 		return this;
 	}
 
-	public getIterator(): SimpleListIterator<T>{
-		return new SimpleListIterator<T>(this, this._head);
+	public getIterator(): DoubleListIterator<T>{
+		return new DoubleListIterator<T>(this, this._head);
 	}
 
-	public insert(iterator: SimpleListIterator<T>, value:T): this{
+	public insert(iterator: DoubleListIterator<T>, value:T): this{
 		if(iterator.getList() != this) {
 			return;
 		}
@@ -118,7 +118,7 @@ export class DoubleLinkedList<T>{
 		return this;
 	}
 
-	public remove(iterator:SimpleListIterator<T>):this{
+	public remove(iterator:DoubleListIterator<T>):this{
 		var headNodePointer = this._head;
 
 		if(iterator.getList() != this) {
@@ -159,7 +159,8 @@ export class DoubleLinkedList<T>{
 
 }
 
-class SimpleListIterator<T>{
+// TODO: Define iterator as an interface
+export class DoubleListIterator<T>{
 	private _mainNode : ListNode<T>;
 	private _list : DoubleLinkedList<T>;
 
@@ -187,6 +188,13 @@ class SimpleListIterator<T>{
 	forth(): this{
 		if(this._mainNode != null) {
 			this._mainNode = this._mainNode.getNext();
+		}
+		return this;
+	}
+
+	backward():this{
+		if (this._mainNode != null) {
+			this._mainNode = this._mainNode.getPrevious();
 		}
 		return this;
 	}
