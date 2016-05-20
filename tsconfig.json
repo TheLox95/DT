@@ -9,7 +9,7 @@
         "node_modules"
     ],
     "files":[
-        "main.ts",
-        "stack/Stack.ts"
+        "stack/Stack.ts",
+	"uTest/StackTest.ts"
     ]
 }
