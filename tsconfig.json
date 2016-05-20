@@ -9,6 +9,7 @@
     "files": [
         "linkedList/LinkedList.ts",
 	"queue/Queue.ts",
+	"uTest/QueueTest.ts",
 	"graph/Graph.ts",
 	"uTest/GraphTest.ts"
 	]
