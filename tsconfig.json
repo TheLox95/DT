@@ -7,7 +7,7 @@
     },
     "files": [
         "linkedList/LinkedList.ts",
-        "main.ts"
+    	"uTest/LinkedListTest.ts"
     ],
     "exclude": [
         "node_modules"
