@@ -149,11 +149,11 @@ export class DoubleLinkedList<T>{
 		return this;
 	}
 
-	public traverse(func:Function){
+	public traverse(func:(item:T)=>T){
 		let current = this._head;
 		while(current != null){
-			func(current.getValue());
-			current.getNext();
+			current.setValue(func(current.getValue()));
+			current = current.getNext();
 		}
 	}
 
