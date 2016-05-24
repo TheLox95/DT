@@ -9,8 +9,11 @@
   "main": "main.js",
   "scripts": {
     "test": "jasmine",
-    "tsc": "tsc"
+    "tsc":"tsc"
   },
   "author": "TheLox95",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^2.4.1"
+  }
 }

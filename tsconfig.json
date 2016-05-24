@@ -12,7 +12,9 @@
     "files": [
 	"queue/Queue.ts",
 	"hashTable/HashTable.ts",
-	"uTest/HashTableTest.ts"
+	"uTest/HashTableTest.ts",
+	"heap/Heap.ts",
+	"uTest/HeapTest.ts"
     ],
     "exclude": [
         "node_modules"
