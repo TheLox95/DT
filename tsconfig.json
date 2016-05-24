@@ -16,9 +16,11 @@
 	"heap/Heap.ts",
 	"uTest/HeapTest.ts",
         "linkedList/LinkedList.ts",
+	"stack/Stack.ts",
+	"uTest/StackTest.ts",
     	"uTest/LinkedListTest.ts"
     ],
     "exclude": [
         "node_modules"
-    ]
+   ]
 }

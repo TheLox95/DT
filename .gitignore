@@ -1,5 +1,6 @@
 */*.js
 *.js
 node_modules/
-**/*.log
 .exrc
+**/*.log
+>>>>>>> stack
