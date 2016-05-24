@@ -1,6 +1,5 @@
 */*.js
 *.js
 node_modules/
-<<<<<<< HEAD
 **/*.log
 .exrc
