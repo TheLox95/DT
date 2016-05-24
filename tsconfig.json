@@ -9,6 +9,7 @@
         "removeComments": false,
         "suppressImplicitAnyIndexErrors": true
     },
+   "exclude": [ "node_modules" ],
     "files": [
 	"queue/Queue.ts",
 	"hashTable/HashTable.ts",
@@ -22,9 +23,8 @@
         "linkedList/DoubleLinkedList.ts",
         "uTest/DoubleLinkedListTest.ts",
         "tree/BinaryTree.ts",
-        "uTest/BinaryTreeTest.ts"
-    ],
-    "exclude": [
-        "node_modules"
-   ]
+        "uTest/BinaryTreeTest.ts",
+	"graph/Graph.ts",
+	"uTest/GraphTest.ts"
+    ]
 }

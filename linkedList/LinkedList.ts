@@ -9,22 +9,22 @@ export class SimpleList<T>{
 		this._count = 0;
 	}
 
-	public getHead(){
+	public getHead() {
 		return this._head;
 	}
 
-	public getTail(){
+	public getTail() {
 		return this._tail;
 	}
 
-	public append(value:T): this{
-		if(this._head == null) {
+	public append(value: T): this {
+		if (this._head == null) {
 			let node = new ListNode<T>();
 			this._head = node;
 			this._tail = node;
 
 			this._head.setValue(value);
-		}else{
+		} else {
 			this._tail.insertAfter(value);
 			this._tail = this._tail.getNext();
 		}
@@ -34,14 +34,14 @@ export class SimpleList<T>{
 		return this;
 	}
 
-	public prepend(value:T): this{
-		let newNode= new ListNode<T>();
+	public prepend(value: T): this {
+		let newNode = new ListNode<T>();
 		newNode.setValue(value);
 		newNode.setNext(this._head);
 
 		this._head = newNode;
 
-		if(this._tail == null){
+		if (this._tail == null) {
 			this._tail = this._head;
 		}
 
@@ -50,15 +50,15 @@ export class SimpleList<T>{
 		return this;
 	}
 
-	public removeHead(): this{
-		if(this._head != null){
+	public removeHead(): this {
+		if (this._head != null) {
 
-			let newNode : ListNode<T> = null;
+			let newNode: ListNode<T> = null;
 
 			newNode = this._head.getNext();
 			this._head = newNode
 
-			if(this._head == null){
+			if (this._head == null) {
 				this._tail = null;
 			}
 
@@ -67,15 +67,15 @@ export class SimpleList<T>{
 		return this;
 	}
 
-	public removeTail(): this{
+	public removeTail(): this {
 		let headNodePointer = this._head;
 
-		if(this._head != null) {
-			if(this._head == this._tail) {
+		if (this._head != null) {
+			if (this._head == this._tail) {
 				this._head = null;
 				this._tail = null
-			}else{
-				while(headNodePointer.getNext() != this._tail){
+			} else {
+				while (headNodePointer.getNext() != this._tail) {
 					headNodePointer = headNodePointer.getNext();
 				}
 
@@ -89,51 +89,51 @@ export class SimpleList<T>{
 		return this;
 	}
 
-	public getIterator(): SimpleListIterator<T>{
+	public getIterator(): SimpleListIterator<T> {
 		return new SimpleListIterator<T>(this, this._head);
 	}
 
-	public insert(iterator: SimpleListIterator<T>, value:T): this{
-		if(iterator.getList() != this) {
+	public insert(iterator: SimpleListIterator<T>, value: T): this {
+		if (iterator.getList() != this) {
 			return;
 		}
 
-		if(iterator.getNode() != null) {
+		if (iterator.getNode() != null) {
 			iterator.getNode().insertAfter(value);
 
-			if(iterator.getNode() == this._tail) {
+			if (iterator.getNode() == this._tail) {
 				this._tail = iterator.getNode().getNext();
 			}
 
 			this._count++;
-		}else{
+		} else {
 			this.append(value);
 		}
 		return this;
 	}
 
-	public remove(iterator:SimpleListIterator<T>):this |boolean {
+	public remove(iterator: SimpleListIterator<T>): this | boolean {
 		var headNodePointer = this._head;
 
-		if(iterator.getList() != this) {
-			return ;
+		if (iterator.getList() != this) {
+			return;
 		}
 
-		if(iterator.getNode() == null) {
-			return ;
+		if (iterator.getNode() == null) {
+			return;
 		}
 
-		if(iterator.getNode() == this._head) {
+		if (iterator.getNode() == this._head) {
 			iterator.forth();
 			this.removeHead();
-		}else{
-			while(headNodePointer.getNext() != iterator.getNode()){
+		} else {
+			while (headNodePointer.getNext() != iterator.getNode()) {
 				headNodePointer = headNodePointer.getNext();
 			}
 
 			iterator.forth();
 
-			if(headNodePointer.getNext() == this._tail) {
+			if (headNodePointer.getNext() == this._tail) {
 				this._tail = headNodePointer;
 			}
 
@@ -145,42 +145,42 @@ export class SimpleList<T>{
 }
 
 export class SimpleListIterator<T>{
-	private _mainNode : ListNode<T>;
-	private _list : SimpleList<T>;
+	private _mainNode: ListNode<T>;
+	private _list: SimpleList<T>;
 
-	constructor(list: SimpleList<T> = null, node: ListNode<T> = null){
+	constructor(list: SimpleList<T> = null, node: ListNode<T> = null) {
 		this._mainNode = node;
 		this._list = list;
 	}
 
-	getList(){
+	getList() {
 		return this._list;
 	}
 
-	getNode(){
+	getNode() {
 		return this._mainNode;
 	}
 
-	start(): this{
-		if(this._list != null){
+	start(): this {
+		if (this._list != null) {
 			this._mainNode = this._list.getHead();
 		}
 
 		return this;
 	}
 
-	forth(): this{
-		if(this._mainNode != null) {
+	forth(): this {
+		if (this._mainNode != null) {
 			this._mainNode = this._mainNode.getNext();
 		}
 		return this;
 	}
 
-	getItem(): T{
+	getItem(): T {
 		return this._mainNode.getValue();
 	}
 
-	isValid(): boolean{
+	isValid(): boolean {
 		return (this._mainNode != null)
 	}
 }
@@ -209,7 +209,7 @@ class ListNode<T>{
 		return this._next;
 	}
 
-	public setNext(value: ListNode<T>): this{
+	public setNext(value: ListNode<T>): this {
 		this._next = value;
 		return this;
 	}
