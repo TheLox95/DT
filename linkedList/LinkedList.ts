@@ -13,6 +13,10 @@ export class SimpleList<T>{
 		return this._head;
 	}
 
+	public getCount(){
+		return this._count;
+	}
+
 	public getTail() {
 		return this._tail;
 	}

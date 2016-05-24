@@ -80,11 +80,12 @@ class GraphNode<NodeType, ArcType> {
 		return null;
 	}
 
-	public removeArc(node:Node<NodeType,ArcType>){
+	public removeArc(node:Node<NodeType,ArcType>): boolean{
 		let iterator :list.SimpleListIterator<Arc<NodeType,ArcType>>  = this._arcList.getIterator();	
 		for (iterator.start(); iterator.isValid(); iterator.forth()) {
 			if(iterator.getItem().getNode() == node) {
 				this._arcList.remove(iterator);
+				return true;
 			}
 		}		
 		return null;

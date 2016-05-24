@@ -1,4 +1,5 @@
-import SLL = require("../linkedList/LinkedList");
+import {SimpleList} from "../linkedList/LinkedList";
+
 
 type HashEntryType<T, Q> = HashEntry<T,Q>;
 type hashFunction = (value:string) => number;
@@ -11,7 +12,7 @@ interface HashEntry<KeyT, ValueT> {
 export class HashTable<KeyT,ValueT>{
 	private _modulo = 19;
 	private _count:number;
-	private _table: Array<SLL.LinkedList.SimpleList<HashEntryType<KeyT,ValueT>>>;
+	private _table: Array<SimpleList<HashEntryType<KeyT,ValueT>>>;
 	private _hashFunction: hashFunction;
 
 	constructor(func: hashFunction = HashTable.getSumAllCharCode) {
@@ -58,7 +59,7 @@ export class HashTable<KeyT,ValueT>{
 		var index = this.calculateHash(key);
 
 		if (this.existsIndex(index) == false) {
-			this._table[index] = new SLL.LinkedList.SimpleList <HashEntryType<KeyT,ValueT>>();
+			this._table[index] = new SimpleList <HashEntryType<KeyT,ValueT>>();
 		}
 
 		this._table[index].append(entry);
