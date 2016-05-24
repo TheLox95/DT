@@ -14,7 +14,9 @@
 	"hashTable/HashTable.ts",
 	"uTest/HashTableTest.ts",
 	"heap/Heap.ts",
-	"uTest/HeapTest.ts"
+	"uTest/HeapTest.ts",
+        "linkedList/LinkedList.ts",
+    	"uTest/LinkedListTest.ts"
     ],
     "exclude": [
         "node_modules"

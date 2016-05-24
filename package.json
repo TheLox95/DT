@@ -11,6 +11,9 @@
     "test": "jasmine",
     "tsc":"tsc"
   },
+  "devDependencies": {
+  	"jasmine":"^2.4.1"
+	},
   "author": "TheLox95",
   "license": "ISC",
   "devDependencies": {
