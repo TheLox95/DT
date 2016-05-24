@@ -2,14 +2,19 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "noImplicitAny": false,
-        "sourceMap": false
+	"noImplicitAny": true,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "suppressImplicitAnyIndexErrors": true
     },
+    "files": [
+	"queue/Queue.ts",
+	"hashTable/HashTable.ts",
+	"uTest/HashTableTest.ts"
+    ],
     "exclude": [
         "node_modules"
-    ],
-    "files":[
-     "main.ts",
-     "queue/Queue.ts"
     ]
 }
