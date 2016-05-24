@@ -18,7 +18,11 @@
         "linkedList/LinkedList.ts",
 	"stack/Stack.ts",
 	"uTest/StackTest.ts",
-    	"uTest/LinkedListTest.ts"
+    	"uTest/LinkedListTest.ts",
+        "linkedList/DoubleLinkedList.ts",
+        "uTest/DoubleLinkedListTest.ts",
+        "tree/BinaryTree.ts",
+        "uTest/BinaryTreeTest.ts"
     ],
     "exclude": [
         "node_modules"
