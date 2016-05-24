@@ -31,8 +31,20 @@ describe("HashTable", () => {
 		expect(table2.find(50)).toBe("Azoth");
 	});
 
-	it("should be null when there is a hash collition",()=>{
-		expect(table2.find(14)).toBeNull();
+	it("should insert collited items",()=>{
+		table2.insert(14, "Lantano Garuwashi");
+		table2.insert(23,"Vi Sovari");
+		table2.insert(32, "Logan Gyre");
+		table2.insert(41, "Sa'kagé");
+
+		expect(table2.find(14)).toBe("Lantano Garuwashi");
+		expect(table2.find(23)).toBe("Vi Sovari");
+		expect(table2.find(32)).toBe("Logan Gyre");
+		expect(table2.find(41)).toBe("Sa'kagé");
+	});
+
+	it("should be null when element does not exist in the table",()=>{
+		expect(table2.find(77)).toBeNull();
 	});
 
 	it("should return null when call remove method and element does not exist",()=>{
