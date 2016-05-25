@@ -1,4 +1,4 @@
-import {SimpleList} from "../linkedList/LinkedList";
+import {SimpleList} from "./LinkedList";
 
 
 type HashEntryType<T, Q> = HashEntry<T,Q>;

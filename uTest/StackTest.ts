@@ -1,5 +1,5 @@
 /// <reference path="../spec/support/jasmine.d.ts" />
-import {Stack} from "../stack/Stack";
+import {Stack} from "../src/Stack";
 
 describe("Stack",()=>{
 	let stack = new Stack<string>();

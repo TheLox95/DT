@@ -1,5 +1,5 @@
 /// <reference path="../spec/support/jasmine.d.ts"/>
-import {Graph,Node} from "../graph/Graph";
+import {Graph,Node} from "../src/Graph";
 
 describe("Graph",()=>{
 	let graph = new Graph<number,number>();

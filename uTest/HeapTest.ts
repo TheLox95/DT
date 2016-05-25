@@ -1,9 +1,10 @@
 /// <reference path="../spec/support/jasmine.d.ts" />
-import {Heap} from "../heap/Heap";
+import {Heap} from "../src/Heap";
 
 
 describe("Heap",()=>{
-	let heap = new Heap<number>((x,y)=>{
+	// TODO: Combertir el parametro de funcion del constructor de la clase Heap
+	let heap = new Heap<number>((x:number,y:number):boolean=>{
 		if(x < y){
 			return true;
 		}

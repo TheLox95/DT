@@ -1,4 +1,4 @@
-import DLL = require("../linkedList/DoubleLinkedList");
+import DLL = require("./DoubleLinkedList");
 
 type TreeNode<V> = Tree<V>;
 type TreeChildren<V> = DLL.DoubleLinkedList<TreeNode<V>>;

@@ -1,9 +1,9 @@
 /// <reference path="../spec/support/jasmine.d.ts" />
-import {SimpleList,SimpleListIterator} from "../linkedList/LinkedList";
+import {SimpleList,Iterator} from "../src/LinkedList";
 
 describe("Linked List", () => {
 	let list = new SimpleList<string>();
-	let iterator: SimpleListIterator<string>;
+	let iterator: Iterator<string>;
 
 	it("should append elements to the list", () => {
 		expect(list.append("Iron Man")).toEqual(list);

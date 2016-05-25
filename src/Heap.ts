@@ -1,4 +1,4 @@
-import {ComparerFunction} from "../tree/BinaryTree"
+import {ComparerFunction} from "./BinaryTree"
 export class Heap<ValueT> {
 	private _count:number;
 	private _comparer:ComparerFunction<ValueT>;

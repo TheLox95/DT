@@ -1,12 +1,12 @@
-import {Heap} from "./heap/Heap";
-import {Queue} from "./queue/Queue"
-import {BinaryTree} from "./tree/BinaryTree"
-import {Tree} from "./tree/Tree"
-import {Graph} from "./graph/Graph"
-import {Stack} from "./stack/Stack"
-import {HashTable} from "./hashTable/HashTable"
-import {SimpleList, Iterator} from "./linkedList/LinkedList"
-import {DoubleLinkedList,DoubleListIterator} from "./linkedList/DoubleLinkedList"
+import {Heap} from "./src/Heap";
+import {Queue} from "./src/Queue"
+import {BinaryTree} from "./src/BinaryTree"
+import {Tree} from "./src/Tree"
+import {Graph} from "./src/Graph"
+import {Stack} from "./src/Stack"
+import {HashTable} from "./src/HashTable"
+import {SimpleList, Iterator} from "./src/LinkedList"
+import {DoubleLinkedList,DoubleListIterator} from "./src/DoubleLinkedList"
 
 export {
 	Heap,

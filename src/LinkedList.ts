@@ -96,7 +96,7 @@ export class SimpleList<T>{
 	}
 
 	public getIterator(): Iterator<T> {
-		return new Iterator<T>(this, this._head);
+		return new SimpleListIterator<T>(this, this._head);
 	}
 
 	public insert(iterator: Iterator<T>, value: T): this {

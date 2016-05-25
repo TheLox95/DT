@@ -1,5 +1,5 @@
 /// <reference path="../spec/support/jasmine.d.ts" />
-import ht = require("../hashTable/HashTable");
+import ht = require("../src/HashTable");
 
 describe("HashTable", () => {
 	let table1 = new ht.HashTable<string, string>();

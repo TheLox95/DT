@@ -1,5 +1,5 @@
 /// <reference path="../spec/support/jasmine.d.ts" />
-import * as t from  "../tree/BinaryTree";
+import * as t from  "../src/BinaryTree";
 
 describe("Binary Tree",()=>{
 
@@ -35,7 +35,7 @@ describe("Binary Tree",()=>{
 	});
 
 	it("should insert value of 5 under node of value 10",()=>{
-		let insertFun: t.ComparerFunction<number> = (num1, num2) => {
+		let insertFun: t.ComparerFunction<number> = (num1: number, num2: number) => {
 			if(num1 < num2) {
 				return true;
 			}

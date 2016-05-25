@@ -1,6 +1,6 @@
-/// <reference path="../linkedList/LinkedList.ts"/>
-import * as list from "../linkedList/LinkedList";
-import  {Queue} from "../queue/Queue";
+/// <reference path="./LinkedList.ts"/>
+import * as list from "./LinkedList";
+import  {Queue} from "./Queue";
 
 
 export type Node<T,V> = GraphNode<T,V>;
@@ -57,7 +57,7 @@ class GraphNode<NodeType, ArcType> {
 		return this._isMarked;
 	}
 
-	public getArcListIterator():list.SimpleListIterator<GraphArc<NodeType,ArcType>>{
+	public getArcListIterator():list.Iterator<GraphArc<NodeType,ArcType>>{
 		return this._arcList.getIterator();
 	}
 
@@ -70,7 +70,7 @@ class GraphNode<NodeType, ArcType> {
 	}
 
 	public findArc(node:Node<NodeType,ArcType>):GraphArc<NodeType,ArcType>{
-		let iterator :list.SimpleListIterator<Arc<NodeType,ArcType>>  = this._arcList.getIterator();	
+		let iterator :list.Iterator<Arc<NodeType,ArcType>>  = this._arcList.getIterator();	
 
 		for (iterator.start(); iterator.isValid(); iterator.forth()) {
 			if(iterator.getItem().getNode() == node) {
@@ -81,7 +81,7 @@ class GraphNode<NodeType, ArcType> {
 	}
 
 	public removeArc(node:Node<NodeType,ArcType>): boolean{
-		let iterator :list.SimpleListIterator<Arc<NodeType,ArcType>>  = this._arcList.getIterator();	
+		let iterator :list.Iterator<Arc<NodeType,ArcType>>  = this._arcList.getIterator();	
 		for (iterator.start(); iterator.isValid(); iterator.forth()) {
 			if(iterator.getItem().getNode() == node) {
 				this._arcList.remove(iterator);
@@ -196,7 +196,7 @@ export class Graph<NodeType, ArcType> {
 		func(node);
 		node.setIsMarked(true);
 
-		let iterator: list.SimpleListIterator<GraphArc<NodeType, ArcType>>;
+		let iterator: list.Iterator<GraphArc<NodeType, ArcType>>;
 		iterator = node.getArcListIterator();
 
 		for (iterator.start(); iterator.isValid(); iterator.forth()) {
@@ -213,7 +213,7 @@ export class Graph<NodeType, ArcType> {
 		this._clearMarks();
 
 		let queue = new Queue<Node<NodeType, ArcType>>();
-		let iterator: list.SimpleListIterator<Arc<NodeType,ArcType>>;
+		let iterator: list.Iterator<Arc<NodeType,ArcType>>;
 
 		queue.enqueue(node);
 		node.setIsMarked(true);

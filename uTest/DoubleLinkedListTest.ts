@@ -1,5 +1,5 @@
 ///<reference path="../spec/support/jasmine.d.ts"/>
-import {DoubleLinkedList} from "../linkedList/DoubleLinkedList";
+import {DoubleLinkedList} from "../src/DoubleLinkedList";
 
 describe("Double Linked List", () => {
 
@@ -58,7 +58,8 @@ describe("Double Linked List", () => {
 	});
 
 	it("should apply a function to all nodes of the list",()=>{
-		list.traverse((text)=>{
+		// TODO: Comvbrtir el parametro de funcion del metodo traverse en un tipo
+		list.traverse((text):string=>{
 			return text.concat(" OS");
 		});
 
