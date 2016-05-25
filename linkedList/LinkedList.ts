@@ -1,3 +1,5 @@
+export type Iterator<T> = SimpleListIterator<T>;
+
 export class SimpleList<T>{
 	private _head: ListNode<T>;
 	private _tail: ListNode<T>;
@@ -93,11 +95,11 @@ export class SimpleList<T>{
 		return this;
 	}
 
-	public getIterator(): SimpleListIterator<T> {
-		return new SimpleListIterator<T>(this, this._head);
+	public getIterator(): Iterator<T> {
+		return new Iterator<T>(this, this._head);
 	}
 
-	public insert(iterator: SimpleListIterator<T>, value: T): this {
+	public insert(iterator: Iterator<T>, value: T): this {
 		if (iterator.getList() != this) {
 			return;
 		}
@@ -116,7 +118,7 @@ export class SimpleList<T>{
 		return this;
 	}
 
-	public remove(iterator: SimpleListIterator<T>): this | boolean {
+	public remove(iterator: Iterator<T>): this | boolean {
 		var headNodePointer = this._head;
 
 		if (iterator.getList() != this) {
@@ -148,7 +150,7 @@ export class SimpleList<T>{
 	}
 }
 
-export class SimpleListIterator<T>{
+class SimpleListIterator<T>{
 	private _mainNode: ListNode<T>;
 	private _list: SimpleList<T>;
 
