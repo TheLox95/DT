@@ -1,14 +1,35 @@
 {
-  "name": "data-sctructures",
+  "name": "DT",
   "version": "0.9.0",
   "devDependencies": {
-    "jasmine": "^2.4.1"
+    "jasmine": "^2.4.1",
+    "typescript":"^1.8",
+    "replace": "^0.3.0",
+    "uglify-js": "^2.6.2"
   },
   "description": "Personal project for the practice of basic algorithms and data structures",
-  "main": "main.js",
+  "repository":{
+  	"type":"git"
+  },
+  "keywords":[
+    "data structures",
+    "game programming",
+    "experiment",
+    "linked list",
+    "queue",
+    "heap",
+    "tree",
+    "graph",
+    "hash table"
+    ],
+  "main": "dist/DT.min.js",
+  "files":["dist/DT.min.js"],
   "scripts": {
     "test": "jasmine",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "replace":"replace \"({{ version }})\" %npm_package_version% dist/DT.min.js dist/DT.js",
+    "build": "clear && npm run tsc && uglifyjs src/main.js -o dist/DT.min.js --comments all && npm run replace",
+    "dev": "uglifyjs src/main.js -o dist/DT.js --beautfy=false"
   },
   "author": "Leonardo Borjas <leo_9_t@hotmail.com>",
   "license": "Apache-2.0"

@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-	"noImplicitAny": true,
+        "noImplicitAny": true,
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
@@ -11,21 +11,21 @@
     },
    "exclude": [ "node_modules" ],
     "files": [
-	"main.ts",
-	"src/Queue.ts",
-	"src/HashTable.ts",
-	"uTest/HashTableTest.ts",
-	"src/Heap.ts",
-	"uTest/HeapTest.ts",
+        "src/main.ts",
+        "src/Queue.ts",
+        "src/HashTable.ts",
+        "uTest/HashTableTest.ts",
+        "src/Heap.ts",
+        "uTest/HeapTest.ts",
         "src/LinkedList.ts",
-	"src/Stack.ts",
-	"uTest/StackTest.ts",
-    	"uTest/LinkedListTest.ts",
+        "src/Stack.ts",
+        "uTest/StackTest.ts",
+        "uTest/LinkedListTest.ts",
         "src/DoubleLinkedList.ts",
         "uTest/DoubleLinkedListTest.ts",
         "src/BinaryTree.ts",
         "uTest/BinaryTreeTest.ts",
-	"src/Graph.ts",
-	"uTest/GraphTest.ts"
+        "src/Graph.ts",
+        "uTest/GraphTest.ts"
     ]
 }
