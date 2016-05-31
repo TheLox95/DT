@@ -1,7 +1,8 @@
 {
   "name": "DT",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "devDependencies": {
+    "browserify": "^13.0.1",
     "copyfiles": "^0.2.1",
     "jasmine": "^2.4.1",
     "mv": "^2.1.1",
@@ -12,7 +13,9 @@
   "description": "Personal project for the practice of basic algorithms and data structures",
   "repository": {
     "type": "git"
+    "url":"https://github.com/TheLox95/DT"
   },
+  "typings":"./dist/*.d.ts",
   "keywords": [
     "data structures",
     "game programming",
@@ -27,13 +30,16 @@
   "main": "dist/DT.min.js",
   "files": [
     "dist/DT.min.js",
+    "dist/*.d.ts",
+    "src/*",
     "README.md"
   ],
   "scripts": {
     "test": "jasmine",
     "tsc": "tsc",
+    "browserify":"browserify",
     "replace": "replace \"({{ version }})\" %npm_package_version% dist/DT.min.js dist/DT.js",
-    "build": "clear && npm run tsc && uglifyjs src/main.js -o dist/DT.min.js --comments all && npm run replace && copyfiles -f src/*.d.ts dist/ && rimraf uTest/*.d.ts",
+    "build": "clear && npm run tsc && uglifyjs src/main.js -o dist/DT.min.js --comments all && npm run replace && copyfiles -f src/*.d.ts dist/ && rimraf uTest/*.d.ts && rimraf src/*.d.ts && uglifyjs dist/DT.browser.js -o dist/DT.min.browser.js --comments all",
     "dev": "uglifyjs src/main.js -o dist/DT.js --beautfy=false"
   },
   "author": "Leonardo Borjas <leo_9_t@hotmail.com>",
