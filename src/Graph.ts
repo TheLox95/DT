@@ -6,7 +6,7 @@ import  {Queue} from "./Queue";
 export type Node<T,V> = GraphNode<T,V>;
 export type Arc<T, V> = GraphArc<T,V>;
 
-class GraphArc<TypeNode, TypeArc> {
+export class GraphArc<TypeNode, TypeArc> {
 
 	private _node: GraphNode<TypeNode,TypeArc>;
 	private _weight: TypeArc;
@@ -29,7 +29,7 @@ class GraphArc<TypeNode, TypeArc> {
 }
 
 
-class GraphNode<NodeType, ArcType> {
+export class GraphNode<NodeType, ArcType> {
 	
 	private _value:NodeType;
 	private _arcList: list.SimpleList<Arc<NodeType,ArcType>>;

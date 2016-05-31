@@ -1,7 +1,7 @@
 import DLL = require("./DoubleLinkedList");
 
-type TreeNode<V> = Tree<V>;
-type TreeChildren<V> = DLL.DoubleLinkedList<TreeNode<V>>;
+export type TreeNode<V> = Tree<V>;
+export type TreeChildren<V> = DLL.DoubleLinkedList<TreeNode<V>>;
 
 export class Tree<ValueT>{
 	private _value: ValueT;

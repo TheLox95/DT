@@ -150,7 +150,7 @@ export class SimpleList<T>{
 	}
 }
 
-class SimpleListIterator<T>{
+export class SimpleListIterator<T>{
 	private _mainNode: ListNode<T>;
 	private _list: SimpleList<T>;
 
@@ -191,7 +191,7 @@ class SimpleListIterator<T>{
 	}
 }
 
-class ListNode<T>{
+export class ListNode<T>{
 	private _data: T;
 	private _next: ListNode<T> = null;
 

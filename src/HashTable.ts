@@ -1,10 +1,10 @@
 import {SimpleList} from "./LinkedList";
 
 
-type HashEntryType<T, Q> = HashEntry<T,Q>;
-type hashFunction = (value:string) => number;
+export type HashEntryType<T, Q> = HashEntry<T,Q>;
+export type hashFunction = (value:string) => number;
 
-interface HashEntry<KeyT, ValueT> {
+export interface HashEntry<KeyT, ValueT> {
 	key: KeyT;
 	value: ValueT;
 }

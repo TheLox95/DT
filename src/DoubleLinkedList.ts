@@ -208,7 +208,7 @@ export class DoubleListIterator<T>{
 	}
 }
 
-class ListNode<T>{
+export class ListNode<T>{
 	private _previous: ListNode<T> = null;
 	private _data: T;
 	private _next: ListNode<T> = null;

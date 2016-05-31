@@ -2,16 +2,18 @@
   "name": "DT",
   "version": "0.9.0",
   "devDependencies": {
+    "copyfiles": "^0.2.1",
     "jasmine": "^2.4.1",
-    "typescript":"^1.8",
+    "mv": "^2.1.1",
     "replace": "^0.3.0",
+    "rimraf": "^2.5.2",
     "uglify-js": "^2.6.2"
   },
   "description": "Personal project for the practice of basic algorithms and data structures",
-  "repository":{
-  	"type":"git"
+  "repository": {
+    "type": "git"
   },
-  "keywords":[
+  "keywords": [
     "data structures",
     "game programming",
     "experiment",
@@ -21,14 +23,17 @@
     "tree",
     "graph",
     "hash table"
-    ],
+  ],
   "main": "dist/DT.min.js",
-  "files":["dist/DT.min.js"],
+  "files": [
+    "dist/DT.min.js",
+    "README.md"
+  ],
   "scripts": {
     "test": "jasmine",
     "tsc": "tsc",
-    "replace":"replace \"({{ version }})\" %npm_package_version% dist/DT.min.js dist/DT.js",
-    "build": "clear && npm run tsc && uglifyjs src/main.js -o dist/DT.min.js --comments all && npm run replace",
+    "replace": "replace \"({{ version }})\" %npm_package_version% dist/DT.min.js dist/DT.js",
+    "build": "clear && npm run tsc && uglifyjs src/main.js -o dist/DT.min.js --comments all && npm run replace && copyfiles -f src/*.d.ts dist/ && rimraf uTest/*.d.ts",
     "dev": "uglifyjs src/main.js -o dist/DT.js --beautfy=false"
   },
   "author": "Leonardo Borjas <leo_9_t@hotmail.com>",

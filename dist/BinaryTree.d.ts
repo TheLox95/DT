@@ -1,0 +1,32 @@
+export declare type ComparerFunction<T> = (value1: T, value2: T) => boolean;
+export declare type TraversalFunction<T> = (value: T) => void;
+export declare class BinaryTree<ValueT> {
+    private _value;
+    private _parent;
+    private _left;
+    private _right;
+    private _traversalFunction;
+    private _comparer;
+    constructor();
+    setValue(value: ValueT): this;
+    getValue(): ValueT;
+    setParent(tree: BinaryTree<ValueT>): this;
+    getParent(): BinaryTree<ValueT>;
+    setLeft(tree: BinaryTree<ValueT>): this;
+    getLeft(): BinaryTree<ValueT>;
+    setRight(tree: BinaryTree<ValueT>): this;
+    getRight(): BinaryTree<ValueT>;
+    setComparer(func: ComparerFunction<ValueT>): void;
+    getComparer(): (value1: ValueT, value2: ValueT) => boolean;
+    setTraversalFunction(func: TraversalFunction<ValueT>): void;
+    getTraversalFunction(): (value: ValueT) => void;
+    getRoot(): BinaryTree<ValueT>;
+    isRoot(): boolean;
+    isFull(): boolean;
+    insert(data: ValueT, comparer?: ComparerFunction<ValueT>): this;
+    search(value: ValueT, comparer?: ComparerFunction<ValueT>): BinaryTree<ValueT>;
+    preOrderTraversal(tree: BinaryTree<ValueT>, func?: TraversalFunction<ValueT>): void;
+    inOrderTraversal(tree: BinaryTree<ValueT>, func?: TraversalFunction<ValueT>): void;
+    postOrderTraversal(tree: BinaryTree<ValueT>, func?: TraversalFunction<ValueT>): void;
+    getCount(): number;
+}
