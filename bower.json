@@ -1,0 +1,32 @@
+{
+  "name": "DT",
+  "description": "Personal project for the practice of basic algorithms and data structures",
+  "main": "dist/DT.min.browser.js",
+  "authors": [
+    "Leonardo Borjas <leo_9_t@hotmail.com>"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "data",
+    "structures",
+    "game",
+    "programming",
+    "experiment",
+    "linked",
+    "list",
+    "queue",
+    "heap",
+    "tree",
+    "graph",
+    "hash",
+    "table"
+  ],
+  "homepage": "https://github.com/TheLox95/DT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
