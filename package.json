@@ -38,9 +38,12 @@
   "scripts": {
     "test": "jasmine",
     "tsc": "tsc",
-    "browserify":"browserify",
+    "build": "clear && npm run tsc && npm run buildNode && npm run replace && npm run buildBrowser && npm run cleanDir ",
     "replace": "replace \"({{ version }})\" %npm_package_version% dist/DT.min.js dist/DT.js",
-    "build": "clear && npm run tsc && uglifyjs src/main.js -o dist/DT.min.js --comments all && npm run replace && copyfiles -f src/*.d.ts dist/ && rimraf uTest/*.d.ts && rimraf src/*.d.ts && uglifyjs dist/DT.browser.js -o dist/DT.min.browser.js --comments all",
+    "cleanDir":"rimraf uTest/*.d.ts && rimraf src/*.d.ts",
+    "buildBrowser":"npm run browserify && uglifyjs dist/DT.browser.js -o dist/DT.min.browser.js --comments all",
+    "buildNode":"uglifyjs src/main.js -o dist/DT.min.js --comments all && copyfiles -f src/*.d.ts dist/ ",
+    "browserify":"browserify -r ./dist/DT.min.js:DT -o ./dist/DT.browser.js",
     "dev": "uglifyjs src/main.js -o dist/DT.js --beautfy=false"
   },
   "author": "Leonardo Borjas <leo_9_t@hotmail.com>",
