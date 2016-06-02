@@ -24,8 +24,11 @@
   "homepage": "https://github.com/TheLox95/DT",
   "ignore": [
     "**/.*",
+    "dist/*.d.ts",
     "node_modules",
     "bower_components",
+    "uTest/*",
+    "src/*",
     "test",
     "tests"
   ]
